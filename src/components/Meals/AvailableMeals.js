@@ -16,9 +16,7 @@ const AvailableMeals = () => {
         'https://react-http-50e31-default-rtdb.firebaseio.com/meals.json'
       );
 
-      if (!response.ok) {
-        throw new Error();
-      }
+      if (!response.ok) throw new Error();
 
       const mealsData = await response.json();
 
@@ -34,13 +32,15 @@ const AvailableMeals = () => {
       }
 
       setMeals(loadedMeals);
+
+      console.log(loadedMeals);
       setIsLoading(false);
     };
 
     fetchMeals().catch(() => {
       setIsLoading(false);
       setError(
-        `sorry I ata all the meals please forgive me, no Iam just kidding just check you internet connection `
+        `sorry I ata all the meals please forgive me, kidding just check you internet connection `
       );
     });
   }, []);
